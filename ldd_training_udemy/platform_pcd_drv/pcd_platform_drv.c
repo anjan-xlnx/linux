@@ -129,8 +129,6 @@ int pcd_probe(struct platform_device *pdev)
 	return 0;
 
 cdev_fail:
-	devm_kfree(&pdev->dev, pcd_dev_prv_data->buf);
-	devm_kfree(&pdev->dev, pcd_dev_prv_data);
 	return ret;
 }
 
