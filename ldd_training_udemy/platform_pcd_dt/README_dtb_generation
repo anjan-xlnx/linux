@@ -1,0 +1,13 @@
+For generating a new DTB with these platform devices, add this include file to
+arch/arm/boot/dts/am355x-boneblack.dts and run the following command
+
+make ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- am335x-boneblack.dtb
+
+and copy the generated dtb into beagle bone.
+Without removing SD-CARD:
+ - Mount the /dev/mmcblk0p1 to /mnt in the beaglebone black
+ - Copy the generated dtb from host to beagble boen using scp <name.dtb> debian@192.168.7.2:/home/debian
+ - Copy the dtb from /home/debian to /mnt
+
+OR
+Remove and insert the SD card in the PC and copy the file to BOOT partition of the SD card
