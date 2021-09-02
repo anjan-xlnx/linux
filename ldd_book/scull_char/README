@@ -1,0 +1,31 @@
+<linux/types.h>
+	dev_t
+	int MAJOR(dev_t)
+	int MINOR(dev_t)
+	dev_t MKDEV(uint major, unit minor);
+
+<linux/fs.h>
+	int register_chrdev_region(dev_t first, int nr_devs, char *name);
+	int alloc_chrdev_region(dev_t *dev, int first_minor, int nr_devs,
+				char *name);
+	void unregister_chrdev_region(dev_t *first_dev_num, int nr_devs);
+
+	struct file_opreations;
+	struct file;
+	struct inode;
+
+<linux/cdev.h>
+	struct cdev * cdev_alloc(void);
+	void cdev_init(struct cdev *, struct file_operations *);
+	int cdev_add(struct cdev *, dev_t dev_num, int nr_devs);
+	void * cdev_del(struct cdev *);
+
+
+<linux/kernel.h>
+	container_of(pointer, struct struct_name, struct_mem_name);
+
+<asm/uaccess.h>
+	unsigned long copy_to_user(void __user *to, const void *buf,
+			unsigned long count);
+	unsigned long copy_from_user(void *to, const void __user *buf,
+			unsigned long count);
